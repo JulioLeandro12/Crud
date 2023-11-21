@@ -1,0 +1,23 @@
+body {
+   background-color: rgb(0, 0, 0);
+}
+
+.topPage {
+    font-family: 'Source Code Pro';
+    color: rgb(255, 255, 0);
+}
+
+.padrao01 {
+    font-family: 'Source Code Pro';
+    color: aquamarine;
+}
+
+.aviso {
+    font-family: 'Source Code Pro';
+}
+
+#stylePlaceHolder {
+    font-family: 'Source Code Pro';
+    color:rgb(255, 255, 255);
+    background-color: rgb(255, 255, 0);
+}
