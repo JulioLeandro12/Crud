@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == ["POST"]){
             $dadosValidos = false;
         }
     }
-}
+} // teste de commit 
 ?>
 
 <!DOCTYPE html>
