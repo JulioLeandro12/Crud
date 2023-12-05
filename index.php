@@ -1,29 +1,3 @@
-<?php 
-$dadosValidos = true;
-if ($_SERVER["REQUEST_METHOD"] == ["POST"]){
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
-    if (isset($email) && isset($senha)){
-        $arquivoCSV = "csv/users.csv";
-        $fpn = fopen($arquivoCSV, "r"); // fopen é usado para abrir arquivos e "r" é de "read"
-        if ($fpn){
-            while (($row = fgetcsv($fpn)) !== false) {
-                if ($row[0] == $email && $row[1] == $senha){
-                    session_start();
-                    $_SESSION["user"] = $row[0];
-                    $_SESSION["auth"] = true;
-                    fclose($fpn);
-                    header("location: /public/home.php", true, 302);
-                    exit;
-                } // teste
-            }
-            fclose($fpn);
-            $dadosValidos = false;
-        }
-    }
-} // teste de commit 
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -31,6 +5,34 @@ if ($_SERVER["REQUEST_METHOD"] == ["POST"]){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
     <title>Make your Login</title>
+
+    <script>
+        <?php
+            $dadosValidos = true;
+            if ($_SERVER["REQUEST_METHOD"] == ["POST"]){
+                $email = $_POST["email"];
+                $senha = $_POST["senha"];
+            if (isset($email) && isset($senha)){
+                $arquivoCSV = "csv/users.csv";
+                $fpn = fopen($arquivoCSV, "r"); // fopen é usado para abrir arquivos e "r" é de "read"
+                if ($fpn){
+                    while (($row = fgetcsv($fpn)) !== false) {
+                        if ($row[0] == $email && $row[1] == $senha){
+                            session_start();
+                            $_SESSION["user"] = $row[0];
+                            $_SESSION["auth"] = true;
+                            fclose($fpn);
+                            header("location: /public/home.php", true, 302);
+                            exit;
+                        }
+                    }
+                    fclose($fpn);
+                    $dadosValidos = false;
+                }
+            }
+        } 
+        ?>
+    </script>
 </head>
 <body>
 <div>
